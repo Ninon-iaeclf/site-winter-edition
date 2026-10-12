@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -60 1040 620" width="1040" height="620" role="img" aria-label="Les concurrents en trois cercles autour du produit : directs, indirects, et ceux qu'on oublie" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<rect y="-60" width="1040" height="620" fill="#ffffff"/>
+<text x="24" y="-22" font-size="26" font-weight="700" fill="#1c1c1c">L'analyse de la concurrence</text>
+<circle cx="270" cy="270" r="250" fill="#f6dfe2" stroke="#ffffff" stroke-width="2"/>
+<circle cx="270" cy="270" r="175" fill="#e9b3bb" stroke="#ffffff" stroke-width="2"/>
+<circle cx="270" cy="270" r="105" fill="#d37684" stroke="#ffffff" stroke-width="2"/>
+<circle cx="270" cy="270" r="40" fill="#b3122e" stroke="#ffffff" stroke-width="2"/>
+<path d="M282 258 L560 62 H612" fill="none" stroke="#b3122e" stroke-width="1.5"/><circle cx="282" cy="258" r="3.5" fill="#b3122e"/>
+<text x="624" y="68" font-size="20" font-weight="700" fill="#1c1c1c">Notre produit</text>
+<text x="624" y="92" font-size="15" fill="#444444">Red Bull Winter Edition Sugarfree,</text>
+<text x="624" y="113" font-size="15" fill="#444444">goût pomme d'amour</text>
+<path d="M330 300 L560 178 H612" fill="none" stroke="#b3122e" stroke-width="1.5"/><circle cx="330" cy="300" r="3.5" fill="#b3122e"/>
+<text x="624" y="184" font-size="20" font-weight="700" fill="#1c1c1c">Concurrents directs</text>
+<text x="624" y="208" font-size="15" fill="#444444">Red Bull : Sugarfree, Zéro, Winter Edition, Editions</text>
+<text x="624" y="229" font-size="15" fill="#444444">Monster · Celsius · Ciao</text>
+<path d="M375 355 L560 318 H612" fill="none" stroke="#b3122e" stroke-width="1.5"/><circle cx="375" cy="355" r="3.5" fill="#b3122e"/>
+<text x="624" y="324" font-size="20" font-weight="700" fill="#1c1c1c">Concurrents indirects</text>
+<text x="624" y="348" font-size="15" fill="#444444">Coca-Cola Zéro · Starbucks (café froid)</text>
+<text x="624" y="369" font-size="15" fill="#444444">Lipton et Fuze Tea (thé glacé)</text>
+<path d="M425 410 L560 438 H612" fill="none" stroke="#b3122e" stroke-width="1.5"/><circle cx="425" cy="410" r="3.5" fill="#b3122e"/>
+<text x="624" y="444" font-size="20" font-weight="700" fill="#1c1c1c">Ceux qu'on oublie</text>
+<text x="624" y="468" font-size="15" fill="#444444">Psychik (marque de distributeur premier prix)</text>
+<text x="1016" y="548" text-anchor="end" font-size="12" fill="#777">Projet étudiant — M1 Marketing, IAE Clermont Auvergne</text></svg>

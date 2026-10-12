@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Winter Edition Pomme d'amour — projet étudiant</title>
+<meta name="description" content="Projet étudiant fictif : une édition d'hiver sans sucres au goût pomme d'amour.">
+<style>
+  :root {
+    --night: #140b0a; --night-2: #1f1110; --card: #2a1614;
+    --red: #b3122e; --red-deep: #7d0c20; --gold: #e6c58a; --gold-soft: #c9a66b;
+    --grid: rgba(246, 236, 224, .1); --text: #f6ece0; --muted: #c8b6a6; --line: rgba(230, 197, 138, .22);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--night); color: var(--text);
+         font: 17px/1.6 "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif; }
+  h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; line-height: 1.15; margin: 0; text-wrap: balance; }
+  p { margin: 0 0 14px; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* Bandeau projet étudiant */
+  .notice { background: var(--gold); color: #2a1a08; font-size: .85rem; text-align: center; padding: 8px 16px; }
+
+  header.nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; gap: 16px; }
+  .brand { font-family: Georgia, serif; letter-spacing: .28em; text-transform: uppercase; font-size: .9rem; color: var(--gold); }
+  nav a { text-decoration: none; color: var(--muted); font-size: .92rem; margin-left: 22px; }
+  nav a:hover { color: var(--gold); }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; padding: 28px 0 72px; }
+  .eyebrow { letter-spacing: .32em; text-transform: uppercase; font-size: .8rem; color: var(--gold-soft); margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); font-style: italic; color: var(--gold); }
+  .hero .tag { display: inline-block; margin: 18px 0 22px; padding: 5px 14px; background: var(--gold); color: #2a1a08;
+               letter-spacing: .3em; font-size: .78rem; font-weight: 700; }
+  .hero p.lead { font-size: 1.15rem; color: var(--text); max-width: 34ch; }
+  .cta { display: inline-block; margin-top: 14px; padding: 13px 26px; background: var(--red); color: #fff; text-decoration: none;
+         border-radius: 999px; font-weight: 600; letter-spacing: .02em; }
+  .cta:hover { background: var(--red-deep); }
+  .poster { border-radius: 18px; overflow: hidden; aspect-ratio: 740 / 935; box-shadow: 0 30px 80px rgba(0,0,0,.55); border: 1px solid var(--line); }
+  .poster img { width: 100%; display: block; }
+
+  /* Atouts */
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--gold); margin-bottom: 12px; }
+  .section-lead { color: var(--muted); max-width: 60ch; margin-bottom: 36px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .feature { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px 20px; }
+  .feature svg { width: 34px; height: 34px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin-bottom: 14px; }
+  .feature h3 { font-size: 1.15rem; color: var(--text); margin-bottom: 6px; }
+  .feature p { color: var(--muted); font-size: .95rem; margin: 0; }
+
+  /* Le goût */
+  .taste { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .notes { list-style: none; margin: 0; padding: 0; }
+  .notes li { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .notes li:last-child { border-bottom: 0; }
+  .notes span { flex: 0 0 96px; font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-soft); padding-top: 4px; }
+  .notes strong { display: block; font-weight: 600; }
+  .notes em { font-style: normal; color: var(--muted); font-size: .95rem; }
+
+  /* Fiche produit */
+  .sheet { background: var(--night-2); border: 1px solid var(--line); border-radius: 18px; padding: 8px 24px; }
+  .sheet div { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .sheet div:last-child { border-bottom: 0; }
+  .sheet dt { color: var(--muted); }
+  .sheet dd { margin: 0; text-align: right; font-weight: 600; }
+  .legal { color: var(--muted); font-size: .88rem; margin-top: 16px; }
+
+  /* Le marché */
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .kicker { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 10px; }
+  .feature ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: .95rem; }
+  .feature li { margin-bottom: 4px; }
+  .rings svg { display: block; width: 100%; height: auto; }
+  .rings-compact, .rings-cards { display: none; }
+  h3.sub { font-size: 1.35rem; color: var(--text); margin: 44px 0 16px; }
+  h3.sub span { display: block; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: .9rem; color: var(--muted); margin-top: 4px; }
+  .callout { background: rgba(179, 18, 46, .18); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; padding: 14px 18px; max-width: 70ch; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--night-2); }
+  table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: .92rem; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-soft); font-weight: 600; white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.num, th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line); }
+  td a:hover { color: var(--gold); }
+  tr.hl td { background: rgba(230, 197, 138, .09); }
+
+  /* Graphiques de prix : barres horizontales, un graphique par cercle, même échelle partout */
+  .chart-controls { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; margin-bottom: 14px; }
+  .seg { background: none; border: 0; color: var(--muted); font: inherit; font-size: .9rem; padding: 7px 16px; border-radius: 999px; cursor: pointer; }
+  .seg.is-on { background: var(--gold); color: #2a1a08; font-weight: 600; }
+  .chart-legend { display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--muted); font-size: .88rem; margin-bottom: 8px; }
+  .chart-legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .sw { width: 14px; height: 10px; border-radius: 0 3px 3px 0; display: inline-block; }
+  .sw-accent, .bar.is-accent { background: #bd8420; }
+  .sw-rest, .bar { background: #766c67; }
+  .sw-line { width: 2px; height: 16px; background: var(--text); display: inline-block; }
+  .chart { margin-top: 34px; }
+  .chart h3 { font-size: 1.2rem; color: var(--text); }
+  .chart h3 span { display: block; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: .88rem; color: var(--muted); margin: 4px 0 14px; }
+  .bar-row { display: grid; grid-template-columns: 250px 1fr; gap: 16px; align-items: center; padding: 5px 0; border-radius: 6px; outline: 0; }
+  .bar-row:hover, .bar-row:focus-visible { background: rgba(246, 236, 224, .05); }
+  .bar-row:hover .bar, .bar-row:focus-visible .bar { filter: brightness(1.25); }
+  .bar-label { font-size: .88rem; line-height: 1.3; text-align: right; }
+  .bar-label strong { display: block; }
+  .bar-label span { color: var(--muted); }
+  .plot { position: relative; height: 22px; margin-right: 58px;
+          background: repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px calc(100% / 5.2)); }
+  .bar { position: absolute; left: 0; top: 4px; height: 14px; border-radius: 0 4px 4px 0; transition: width .3s; }
+  .bar-value { position: absolute; top: 2px; line-height: 18px; z-index: 1; background: var(--night); padding: 0 5px; border-radius: 4px; margin-left: -3px; font-size: .86rem; font-variant-numeric: tabular-nums; white-space: nowrap; transition: left .3s; }
+  .ref { position: absolute; top: -5px; bottom: -5px; width: 2px; background: var(--text); opacity: .75; left: calc(1.45 / 2.6 * 100%); }
+  .axis { display: grid; grid-template-columns: 250px 1fr; gap: 16px; margin-top: 4px; }
+  .axis div { position: relative; height: 18px; margin-right: 58px; }
+  .axis span { position: absolute; transform: translateX(-50%); font-size: .74rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .chart-tip { position: fixed; z-index: 10; pointer-events: none; background: #f6ece0; color: #2a1a08; border-radius: 10px; padding: 10px 12px;
+               font-size: .84rem; line-height: 1.4; max-width: 260px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  .chart-tip b { display: block; font-size: 1.05rem; }
+  .table-view { margin-top: 36px; }
+  .table-view summary { cursor: pointer; color: var(--gold); font-size: .95rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0 48px; color: var(--muted); font-size: .88rem; }
+  footer strong { color: var(--text); }
+
+  @media (max-width: 820px) {
+    .hero, .taste { grid-template-columns: 1fr; gap: 32px; }
+    .hero { padding-bottom: 48px; }
+    .poster { max-width: 420px; margin: 0 auto; width: 100%; }
+    .grid4 { grid-template-columns: 1fr 1fr; }
+    .grid3 { grid-template-columns: 1fr; }
+    .rings-full { display: none; }
+    .bar-row, .axis { grid-template-columns: 1fr; gap: 4px; }
+    .bar-label { text-align: left; }
+    .bar-label strong { display: inline; }
+    .axis div:first-child { display: none; }
+    .rings-compact { display: block; max-width: 420px; margin: 0 auto 20px; }
+    .rings-cards { display: block; }
+    nav a { margin-left: 14px; }
+    section { padding: 52px 0; }
+  }
+  @media (max-width: 460px) {
+    .grid4 { grid-template-columns: 1fr; }
+    nav { display: none; }
+    .notes span { flex-basis: 78px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="notice">Projet étudiant fictif — ce produit n'existe pas et ce site n'est pas affilié à la marque Red Bull.</div>
+
+<div class="wrap">
+  <header class="nav">
+    <div class="brand">Winter Edition</div>
+    <nav>
+      <a href="#atouts">Atouts</a>
+      <a href="#gout">Le goût</a>
+      <a href="#fiche">Fiche produit</a>
+      <a href="#marche">Le marché</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Red Bull · Winter Edition</div>
+      <h1>Pomme d'amour</h1>
+      <div class="tag">SUGARFREE</div>
+      <p class="lead">Le goût des fêtes dans une canette : la pomme rouge et le caramel de la fête foraine, sans sucres.</p>
+      <a class="cta" href="#gout">Découvrir le goût</a>
+    </div>
+    <div class="poster">
+      <img src="affiche.jpg" alt="Canette rouge Winter Edition Sugarfree goût pomme d'amour, posée dans la neige entre une pomme d'amour et une pomme au caramel">
+    </div>
+  </div>
+</div>
+
+<section id="atouts">
+  <div class="wrap">
+    <h2 class="section-title">Quatre raisons de l'attendre</h2>
+    <p class="section-lead">Une édition pensée pour l'hiver, qui garde ce qu'on attend d'une boisson énergisante.</p>
+    <div class="grid4">
+      <div class="feature">
+        <svg viewBox="0 0 24 24"><path d="M12 7c-3-2-7 0-7 5s3 8 7 8 7-3 7-8-4-7-7-5z"/><path d="M12 7c0-2 1-3 3-4"/></svg>
+        <h3>Saveur pomme d'amour</h3>
+        <p>Pomme rouge croquante et caramel doré.</p>
+      </div>
+      <div class="feature">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11"/><path d="M12 5l-2-2M12 5l2-2M12 19l-2 2M12 19l2 2"/></svg>
+        <h3>Édition d'hiver</h3>
+        <p>Une recette de saison, pour les soirées froides.</p>
+      </div>
+      <div class="feature">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M6 18L18 6"/></svg>
+        <h3>Sans sucres</h3>
+        <p>Tout le goût, version Sugarfree.</p>
+      </div>
+      <div class="feature">
+        <svg viewBox="0 0 24 24"><path d="M13 2L5 13h6l-1 9 8-12h-6z"/></svg>
+        <h3>L'énergie habituelle</h3>
+        <p>La même teneur en caféine qu'une canette classique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gout">
+  <div class="wrap taste">
+    <div>
+      <h2 class="section-title">Le goût, en trois temps</h2>
+      <p class="section-lead">La pomme d'amour, c'est le souvenir des marchés de Noël et des fêtes foraines. Nous l'avons mise en canette.</p>
+    </div>
+    <ul class="notes">
+      <li><span>D'abord</span><div><strong>La pomme rouge</strong><em>Fruitée et légèrement acidulée, dès la première gorgée.</em></div></li>
+      <li><span>Ensuite</span><div><strong>Le caramel</strong><em>Une note gourmande et dorée, sans lourdeur.</em></div></li>
+      <li><span>Enfin</span><div><strong>La fraîcheur</strong><em>Une finale nette et pétillante, à servir bien frais.</em></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="fiche">
+  <div class="wrap taste">
+    <div>
+      <h2 class="section-title">Fiche produit</h2>
+      <p class="section-lead">L'essentiel à savoir avant de la glisser dans son sac.</p>
+    </div>
+    <div>
+      <dl class="sheet">
+        <div><dt>Format</dt><dd>Canette de 25 cl</dd></div>
+        <div><dt>Goût</dt><dd>Pomme d'amour</dd></div>
+        <div><dt>Sucres</dt><dd>Sans sucres</dd></div>
+        <div><dt>Caféine</dt><dd>Comme une canette classique</dd></div>
+        <div><dt>Saison</dt><dd>Hiver</dd></div>
+      </dl>
+      <p class="legal">Teneur élevée en caféine. Déconseillé aux enfants et aux femmes enceintes ou allaitantes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="marche">
+  <div class="wrap">
+    <h2 class="section-title">Le marché</h2>
+    <p class="section-lead">Avant de fixer un prix, il faut savoir à quel besoin la boisson répond, pour qui, et face à qui.</p>
+
+    <div class="grid3">
+      <div class="feature"><div class="kicker">Quel besoin</div><p>Un boost sans sucre, au goût gourmand de saison.</p></div>
+      <div class="feature"><div class="kicker">Pour qui</div><p>Les 18-35 ans, en France.</p></div>
+      <div class="feature"><div class="kicker">Où</div><p>En grande surface et en magasin de proximité.</p></div>
+    </div>
+
+    <h3 class="sub">Les concurrents, en trois cercles</h3>
+    <div class="rings rings-full">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" role="img" aria-label="Les concurrents en trois cercles autour du produit : directs, indirects, et ceux qu'on oublie" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<circle cx="270" cy="270" r="250" fill="#2c1513" stroke="#140b0a" stroke-width="2"/>
+<circle cx="270" cy="270" r="175" fill="#55141f" stroke="#140b0a" stroke-width="2"/>
+<circle cx="270" cy="270" r="105" fill="#8a1226" stroke="#140b0a" stroke-width="2"/>
+<circle cx="270" cy="270" r="40" fill="#e6c58a" stroke="#140b0a" stroke-width="2"/>
+<path d="M282 258 L560 62 H612" fill="none" stroke="#e6c58a" stroke-width="1.5"/><circle cx="282" cy="258" r="3.5" fill="#e6c58a"/>
+<text x="624" y="68" font-size="20" font-weight="700" fill="#e6c58a">Notre produit</text>
+<text x="624" y="92" font-size="15" fill="#c8b6a6">Red Bull Winter Edition Sugarfree,</text>
+<text x="624" y="113" font-size="15" fill="#c8b6a6">goût pomme d'amour</text>
+<path d="M330 300 L560 178 H612" fill="none" stroke="#e6c58a" stroke-width="1.5"/><circle cx="330" cy="300" r="3.5" fill="#e6c58a"/>
+<text x="624" y="184" font-size="20" font-weight="700" fill="#e6c58a">Concurrents directs</text>
+<text x="624" y="208" font-size="15" fill="#c8b6a6">Red Bull : Sugarfree, Zéro, Winter Edition, Editions</text>
+<text x="624" y="229" font-size="15" fill="#c8b6a6">Monster · Celsius · Ciao</text>
+<path d="M375 355 L560 318 H612" fill="none" stroke="#e6c58a" stroke-width="1.5"/><circle cx="375" cy="355" r="3.5" fill="#e6c58a"/>
+<text x="624" y="324" font-size="20" font-weight="700" fill="#e6c58a">Concurrents indirects</text>
+<text x="624" y="348" font-size="15" fill="#c8b6a6">Coca-Cola Zéro · Starbucks (café froid)</text>
+<text x="624" y="369" font-size="15" fill="#c8b6a6">Lipton et Fuze Tea (thé glacé)</text>
+<path d="M425 410 L560 438 H612" fill="none" stroke="#e6c58a" stroke-width="1.5"/><circle cx="425" cy="410" r="3.5" fill="#e6c58a"/>
+<text x="624" y="444" font-size="20" font-weight="700" fill="#e6c58a">Ceux qu'on oublie</text>
+<text x="624" y="468" font-size="15" fill="#c8b6a6">Psychik (marque de distributeur premier prix)</text>
+</svg>
+    </div>
+    <div class="rings rings-compact">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 540" role="img" aria-label="Les concurrents en trois cercles autour du produit : directs, indirects, et ceux qu'on oublie" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<circle cx="270" cy="270" r="250" fill="#2c1513" stroke="#140b0a" stroke-width="2"/>
+<circle cx="270" cy="270" r="175" fill="#55141f" stroke="#140b0a" stroke-width="2"/>
+<circle cx="270" cy="270" r="105" fill="#8a1226" stroke="#140b0a" stroke-width="2"/>
+<circle cx="270" cy="270" r="40" fill="#e6c58a" stroke="#140b0a" stroke-width="2"/>
+<text x="270" y="66" text-anchor="middle" font-size="19" font-weight="600" fill="#f6ece0">Ceux qu'on oublie</text>
+<text x="270" y="137" text-anchor="middle" font-size="19" font-weight="600" fill="#f6ece0">Indirects</text>
+<text x="270" y="205" text-anchor="middle" font-size="19" font-weight="600" fill="#f6ece0">Directs</text>
+<text x="270" y="264" text-anchor="middle" font-size="13" font-weight="700" fill="#f6ece0">Winter</text><text x="270" y="281" text-anchor="middle" font-size="13" font-weight="700" fill="#f6ece0">Edition</text>
+</svg>
+    </div>
+    <div class="rings-cards">
+    <div class="grid3">
+      <div class="feature"><div class="kicker">Directs</div>
+        <ul><li>Red Bull : Sugarfree, Zéro, Winter Edition, Editions</li><li>Monster</li><li>Celsius</li><li>Ciao</li></ul></div>
+      <div class="feature"><div class="kicker">Indirects</div>
+        <ul><li>Coca-Cola Zéro</li><li>Starbucks (café froid)</li><li>Lipton et Fuze Tea (thé glacé)</li></ul></div>
+      <div class="feature"><div class="kicker">Ceux qu'on oublie</div>
+        <ul><li>Psychik (marque de distributeur premier prix)</li></ul></div>
+    </div>
+    </div>
+
+    <h3 class="sub">Relevé des prix <span>Carrefour.fr, le 1er octobre 2026</span></h3>
+    <p class="section-lead">27 produits relevés en ligne, classés du plus cher au moins cher dans chaque cercle. Le prix pour 25 cl permet de comparer des canettes de tailles différentes.</p>
+    <p class="callout"><strong>À noter :</strong> la nouvelle Winter Edition est en promotion dès son lancement, avec la 2e canette à −30 % sur Carrefour.fr (relevé du 1er octobre 2026).</p>
+    <div class="chart-controls" role="group" aria-label="Prix affiché dans les graphiques">
+      <button type="button" class="seg is-on" data-measure="p25" aria-pressed="true">Prix pour 25 cl</button>
+      <button type="button" class="seg" data-measure="canette" aria-pressed="false">Prix d'une canette</button>
+    </div>
+    <div class="chart-legend">
+      <span><i class="sw sw-accent"></i>Winter Edition déjà en rayon</span>
+      <span><i class="sw sw-rest"></i>Autres produits</span>
+      <span><i class="sw-line"></i>Notre prix envisagé : 1,45 €</span>
+    </div>
+    <div id="price-charts"></div>
+    <div class="chart-tip" id="chart-tip" role="status" hidden></div>
+
+    <details class="table-view">
+      <summary>Voir le tableau complet des prix</summary>
+    <h3 class="sub">Concurrents directs <span>Les autres boissons énergisantes</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Marque et produit</th><th>Sans sucres ?</th><th class="num">Contenance</th><th class="num">Prix d'une canette</th><th class="num">Prix pour 25 cl</th><th>Promotion ou remarque</th></tr></thead>
+        <tbody>
+        <tr>
+          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sans-sucres-red-bull-9002490208592" target="_blank" rel="noopener">Sans Sucres (Sugarfree)</a></td>
+          <td>Oui</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,25 €</td>
+          <td class="num"><strong>1,25 €</strong></td>
+          <td>Promo : le 2e à -30 %</td>
+        </tr>
+        <tr>
+          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sans-sucres-red-bull-9002490200381" target="_blank" rel="noopener">Sans Sucres - pack</a></td>
+          <td>Oui</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,14 €</td>
+          <td class="num"><strong>1,14 €</strong></td>
+          <td>Pack de 4</td>
+        </tr>
+        <tr>
+          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-zero-red-bull-9002490278151" target="_blank" rel="noopener">Zéro</a></td>
+          <td>Oui</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,29 €</td>
+          <td class="num"><strong>1,29 €</strong></td>
+          <td>Promo : le 2e à -30 %</td>
+        </tr>
+        <tr>
+          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-zero-red-bull-9002490278199" target="_blank" rel="noopener">Zéro - pack</a></td>
+          <td>Oui</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,25 €</td>
+          <td class="num"><strong>1,25 €</strong></td>
+          <td>Pack de 4</td>
+        </tr>
+        <tr class="hl">
+          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-winter-edition-sans-sucres-gout-pistache-fruits-des-bois-red-bull-9002490305055" target="_blank" rel="noopener">Winter Edition Sans Sucres Pistache &amp; Fruits des bois</a></td>
+          <td>Oui</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,39 €</td>
+          <td class="num"><strong>1,39 €</strong></td>
+          <td>Nouveauté + promo : le 2e à -30 %</td>
+        </tr>
+        <tr class="hl">
+          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-gout-pistache-et-fruits-des-bois-winter-edition-red-bull-9002490290337" target="_blank" rel="noopener">Winter Edition Pistache &amp; Fruits des bois</a></td>
+          <td>Non</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,45 €</td>
+          <td class="num"><strong>1,45 €</strong></td>
+          <td>Nouveauté + promo : le 2e à -30 %</td>
+        </tr>
+        <tr>
+          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-red-bull-9002490205973" target="_blank" rel="noopener">Classique (référence)</a></td>
+          <td>Non</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,15 €</td>
+          <td class="num"><strong>1,15 €</strong></td>
+          <td>Promo : le 2e à -30 %</td>
+        </tr>
+        <tr>
+          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-gout-abricot-fraise-red-bull-9002490255916" target="_blank" rel="noopener">Edition Abricot-Fraise</a></td>
+          <td>Non</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,55 €</td>
+          <td class="num"><strong>1,55 €</strong></td>
+          <td>Promo : le 2e à -30 %</td>
+        </tr>
+        <tr>
+          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-gout-pasteque-red-bull-9002490246594" target="_blank" rel="noopener">Edition Pastèque</a></td>
+          <td>Non</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,59 €</td>
+          <td class="num"><strong>1,59 €</strong></td>
+          <td>Promo : le 2e à -30 %</td>
+        </tr>
+        <tr>
+          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sans-sucres-monster-5060335635808" target="_blank" rel="noopener">Sans Sucres</a></td>
+          <td>Oui</td>
+          <td class="num">50 cl</td>
+          <td class="num">1,89 €</td>
+          <td class="num"><strong>0,95 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-zero-sucres-monster-5060947549753" target="_blank" rel="noopener">Zéro Sucres</a></td>
+          <td>Oui</td>
+          <td class="num">50 cl</td>
+          <td class="num">1,79 €</td>
+          <td class="num"><strong>0,90 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-ultra-paradise-zero-sucre-monster-5060639127139" target="_blank" rel="noopener">Ultra Paradise Zéro Sucre</a></td>
+          <td>Oui</td>
+          <td class="num">50 cl</td>
+          <td class="num">1,45 €</td>
+          <td class="num"><strong>0,73 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sans-sucres-ultra-peach-keen-monster-5061013945363" target="_blank" rel="noopener">Ultra Peach Keen Sans Sucres</a></td>
+          <td>Oui</td>
+          <td class="num">50 cl</td>
+          <td class="num">1,59 €</td>
+          <td class="num"><strong>0,80 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-ultra-rosa-monster-5060947541184" target="_blank" rel="noopener">Ultra Rosa</a></td>
+          <td>Oui</td>
+          <td class="num">50 cl</td>
+          <td class="num">1,85 €</td>
+          <td class="num"><strong>0,93 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Celsius</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sparkling-fraise-pasteque-zero-sucre-celsius-6430056289953" target="_blank" rel="noopener">Sparkling Fraise-Pastèque Zéro Sucre</a></td>
+          <td>Oui</td>
+          <td class="num">35.5 cl</td>
+          <td class="num">1,49 €</td>
+          <td class="num"><strong>1,05 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Celsius</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-petillante-saveur-mangue-citron-zero-sucre-celsius-6430056289892" target="_blank" rel="noopener">Pétillante Mangue Citron Zéro Sucre</a></td>
+          <td>Oui</td>
+          <td class="num">33.5 cl</td>
+          <td class="num">1,59 €</td>
+          <td class="num"><strong>1,19 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Ciao</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-gout-kiwi-concombre-cafeine-et-guarana-energy-ciao-3770037280177" target="_blank" rel="noopener">Energy Kiwi Concombre</a></td>
+          <td>Non (moins sucré : 4g/100ml + stévia)</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,49 €</td>
+          <td class="num"><strong>1,49 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Ciao</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-pomme-rhubarbe-energy-ciao-3770037280153" target="_blank" rel="noopener">Energy Pomme Rhubarbe</a></td>
+          <td>Non (moins sucré : 4g/100ml + stévia)</td>
+          <td class="num">25 cl</td>
+          <td class="num">1,49 €</td>
+          <td class="num"><strong>1,49 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="sub">Concurrents indirects <span>Les autres façons de se donner un coup de boost</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Marque et produit</th><th>Sans sucres ?</th><th class="num">Contenance</th><th class="num">Prix d'une canette</th><th class="num">Prix pour 25 cl</th><th>Promotion ou remarque</th></tr></thead>
+        <tbody>
+        <tr>
+          <td><strong>Coca-Cola</strong><br><a href="https://www.carrefour.fr/p/soda-au-cola-zero-sucres-coca-cola-5449000243195" target="_blank" rel="noopener">Zéro Sucres - pack</a></td>
+          <td>Oui</td>
+          <td class="num">33 cl</td>
+          <td class="num">0,59 €</td>
+          <td class="num"><strong>0,44 €</strong></td>
+          <td>Pack de 6 (pas de canette 33 cL seule en ligne), Promo : le 2ème à -30%</td>
+        </tr>
+        <tr>
+          <td><strong>Coca-Cola</strong><br><a href="https://www.carrefour.fr/p/soda-au-cola-zero-sucres-coca-cola-5449000177650" target="_blank" rel="noopener">Zéro Sucres canette</a></td>
+          <td>Oui</td>
+          <td class="num">50 cl</td>
+          <td class="num">1,19 €</td>
+          <td class="num"><strong>0,60 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Starbucks</strong><br><a href="https://www.carrefour.fr/p/boisson-lactee-au-cafe-arabica-triple-shot-espresso-allege-en-sucres-starbucks-5711953194511" target="_blank" rel="noopener">Triple Shot Espresso allégé en sucres</a></td>
+          <td>Non (allégé)</td>
+          <td class="num">30 cl</td>
+          <td class="num">2,59 €</td>
+          <td class="num"><strong>2,16 €</strong></td>
+          <td>Aucune</td>
+        </tr>
+        <tr>
+          <td><strong>Starbucks</strong><br><a href="https://www.carrefour.fr/p/boisson-cafe-frappuccino-starbucks-5711953161735" target="_blank" rel="noopener">Frappuccino café</a></td>
+          <td>Non (9,5 g/100 g, dont sucre ajouté 5,5 %)</td>
+          <td class="num">25 cl</td>
+          <td class="num">2,45 €</td>
+          <td class="num"><strong>2,45 €</strong></td>
+          <td>Promo : le 2ème à -60%</td>
+        </tr>
+        <tr>
+          <td><strong>Lipton</strong><br><a href="https://www.carrefour.fr/p/boisson-the-glace-peche-zero-sucres-lipton-3168930175605" target="_blank" rel="noopener">Thé glacé Pêche Zéro - pack</a></td>
+          <td>Oui</td>
+          <td class="num">33 cl</td>
+          <td class="num">0,67 €</td>
+          <td class="num"><strong>0,50 €</strong></td>
+          <td>Pack de 6</td>
+        </tr>
+        <tr>
+          <td><strong>Fuze Tea</strong><br><a href="https://www.carrefour.fr/p/boisson-the-noir-glace-framboise-menthe-sans-sucres-fuze-tea-5449000041951" target="_blank" rel="noopener">Thé noir Framboise Menthe Sans Sucres</a></td>
+          <td>Oui</td>
+          <td class="num">1,25 L</td>
+          <td class="num">1,55 €</td>
+          <td class="num"><strong>0,31 €</strong></td>
+          <td>Bouteille 1,25 L</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="sub">Ceux qu'on oublie <span>Les marques de distributeur</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Marque et produit</th><th>Sans sucres ?</th><th class="num">Contenance</th><th class="num">Prix d'une canette</th><th class="num">Prix pour 25 cl</th><th>Promotion ou remarque</th></tr></thead>
+        <tbody>
+        <tr>
+          <td><strong>Psychik (premier prix)</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-zero-psychik-8714800030038" target="_blank" rel="noopener">Zéro</a></td>
+          <td>Non</td>
+          <td class="num">25 cl</td>
+          <td class="num">0,49 €</td>
+          <td class="num"><strong>0,49 €</strong></td>
+          <td>Marque distributeur</td>
+        </tr>
+        <tr>
+          <td><strong>Psychik (premier prix)</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-psychik-8711900013213" target="_blank" rel="noopener">Classique</a></td>
+          <td>Non</td>
+          <td class="num">25 cl</td>
+          <td class="num">0,59 €</td>
+          <td class="num"><strong>0,59 €</strong></td>
+          <td>Marque distributeur</td>
+        </tr>
+        <tr>
+          <td><strong>Psychik (premier prix)</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-psychik-3608330128561" target="_blank" rel="noopener">Classique - pack</a></td>
+          <td>Non</td>
+          <td class="num">25 cl</td>
+          <td class="num">0,50 €</td>
+          <td class="num"><strong>0,50 €</strong></td>
+          <td>Pack de 6</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </details>
+
+    <p class="legal">Source : Carrefour.fr, prix affichés en ligne le 1er octobre 2026. Les promotions sont indiquées dans la dernière colonne et ne sont pas déduites des prix. Chaque nom de produit renvoie à la page relevée.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Projet étudiant fictif.</strong> Site réalisé dans le cadre du cours « Prix et budgets marketing », Master 1 Marketing, IAE Clermont Auvergne, 2026-2027.</p>
+    <p>Ce produit n'existe pas et n'est pas commercialisé. Ce site n'est ni édité ni approuvé par Red Bull GmbH. Les marques citées appartiennent à leurs propriétaires.</p>
+  </div>
+</footer>
+
+<script>
+// Relevé de prix Carrefour.fr du 1er octobre 2026 (fichier Excel du projet)
+const PRIX = [{"cercle": "Direct", "marque": "Red Bull", "produit": "Sans Sucres (Sugarfree)", "sansSucre": "Oui", "canette": 1.25, "ml": 250.0, "p25": 1.25, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Sans Sucres - pack", "sansSucre": "Oui", "canette": 1.14, "ml": 250.0, "p25": 1.14, "promo": "Pack de 4"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Zéro", "sansSucre": "Oui", "canette": 1.29, "ml": 250.0, "p25": 1.29, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Zéro - pack", "sansSucre": "Oui", "canette": 1.25, "ml": 250.0, "p25": 1.25, "promo": "Pack de 4"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Winter Edition Sans Sucres Pistache & Fruits des bois", "sansSucre": "Oui", "canette": 1.39, "ml": 250.0, "p25": 1.39, "promo": "Nouveauté + promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Winter Edition Pistache & Fruits des bois", "sansSucre": "Non", "canette": 1.45, "ml": 250.0, "p25": 1.45, "promo": "Nouveauté + promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Classique (référence)", "sansSucre": "Non", "canette": 1.15, "ml": 250.0, "p25": 1.15, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Edition Abricot-Fraise", "sansSucre": "Non", "canette": 1.55, "ml": 250.0, "p25": 1.55, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Edition Pastèque", "sansSucre": "Non", "canette": 1.59, "ml": 250.0, "p25": 1.59, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Monster", "produit": "Sans Sucres", "sansSucre": "Oui", "canette": 1.89, "ml": 500.0, "p25": 0.95, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Monster", "produit": "Zéro Sucres", "sansSucre": "Oui", "canette": 1.79, "ml": 500.0, "p25": 0.9, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Monster", "produit": "Ultra Paradise Zéro Sucre", "sansSucre": "Oui", "canette": 1.45, "ml": 500.0, "p25": 0.73, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Monster", "produit": "Ultra Peach Keen Sans Sucres", "sansSucre": "Oui", "canette": 1.59, "ml": 500.0, "p25": 0.8, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Monster", "produit": "Ultra Rosa", "sansSucre": "Oui", "canette": 1.85, "ml": 500.0, "p25": 0.93, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Celsius", "produit": "Sparkling Fraise-Pastèque Zéro Sucre", "sansSucre": "Oui", "canette": 1.49, "ml": 355.0, "p25": 1.05, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Celsius", "produit": "Pétillante Mangue Citron Zéro Sucre", "sansSucre": "Oui", "canette": 1.59, "ml": 335.0, "p25": 1.19, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Ciao", "produit": "Energy Kiwi Concombre", "sansSucre": "Non (moins sucré : 4g/100ml + stévia)", "canette": 1.49, "ml": 250.0, "p25": 1.49, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Ciao", "produit": "Energy Pomme Rhubarbe", "sansSucre": "Non (moins sucré : 4g/100ml + stévia)", "canette": 1.49, "ml": 250.0, "p25": 1.49, "promo": "Aucune"}, {"cercle": "Oubliés", "marque": "Psychik (premier prix)", "produit": "Zéro", "sansSucre": "Non", "canette": 0.49, "ml": 250.0, "p25": 0.49, "promo": "Marque distributeur"}, {"cercle": "Oubliés", "marque": "Psychik (premier prix)", "produit": "Classique", "sansSucre": "Non", "canette": 0.59, "ml": 250.0, "p25": 0.59, "promo": "Marque distributeur"}, {"cercle": "Oubliés", "marque": "Psychik (premier prix)", "produit": "Classique - pack", "sansSucre": "Non", "canette": 0.5, "ml": 250.0, "p25": 0.5, "promo": "Pack de 6"}, {"cercle": "Indirect", "marque": "Coca-Cola", "produit": "Zéro Sucres - pack", "sansSucre": "Oui", "canette": 0.59, "ml": 330.0, "p25": 0.44, "promo": "Pack de 6 (pas de canette 33 cL seule en ligne), Promo : le 2ème à -30%"}, {"cercle": "Indirect", "marque": "Coca-Cola", "produit": "Zéro Sucres canette", "sansSucre": "Oui", "canette": 1.19, "ml": 500.0, "p25": 0.6, "promo": "Aucune"}, {"cercle": "Indirect", "marque": "Starbucks", "produit": "Triple Shot Espresso allégé en sucres", "sansSucre": "Non (allégé)", "canette": 2.59, "ml": 300.0, "p25": 2.16, "promo": "Aucune"}, {"cercle": "Indirect", "marque": "Starbucks", "produit": "Frappuccino café", "sansSucre": "Non (9,5 g/100 g, dont sucre ajouté 5,5 %)", "canette": 2.45, "ml": 250.0, "p25": 2.45, "promo": "Promo : le 2ème à -60%"}, {"cercle": "Indirect", "marque": "Lipton", "produit": "Thé glacé Pêche Zéro - pack", "sansSucre": "Oui", "canette": 0.67, "ml": 330.0, "p25": 0.5, "promo": "Pack de 6"}, {"cercle": "Indirect", "marque": "Fuze Tea", "produit": "Thé noir Framboise Menthe Sans Sucres", "sansSucre": "Oui", "canette": 1.55, "ml": 1250.0, "p25": 0.31, "promo": "Bouteille 1,25 L"}];
+const MAX = 2.6, NOTRE_PRIX = 1.45;
+const CERCLES = [["Direct", "Concurrents directs", "Les autres boissons énergisantes"],
+                 ["Indirect", "Concurrents indirects", "Les autres façons de se donner un coup de boost"],
+                 ["Oubliés", "Ceux qu'on oublie", "Les marques de distributeur"]];
+const euro = x => x.toFixed(2).replace(".", ",") + " €";
+const volume = ml => ml >= 1000 ? String(ml / 1000).replace(".", ",") + " L" : (ml / 10) + " cl";
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const tip = document.getElementById("chart-tip");
+
+function showTip(d, x, y) {
+  tip.replaceChildren(el("b", "", euro(d.p25) + " pour 25 cl"),
+    el("div", "", d.marque + " — " + d.produit),
+    el("div", "", "Canette de " + volume(d.ml) + " : " + euro(d.canette)),
+    el("div", "", "Sans sucres : " + d.sansSucre),
+    el("div", "", "Promotion : " + d.promo));
+  tip.hidden = false;
+  const r = tip.getBoundingClientRect();
+  tip.style.left = Math.max(8, Math.min(x + 14, innerWidth - r.width - 8)) + "px";
+  tip.style.top = Math.max(8, Math.min(y + 14, innerHeight - r.height - 8)) + "px";
+}
+
+function drawCharts(measure) {
+  const root = document.getElementById("price-charts");
+  root.replaceChildren();
+  for (const [key, title, sub] of CERCLES) {
+    const rows = PRIX.filter(d => d.cercle === key).sort((a, b) => b[measure] - a[measure]);
+    const chart = el("div", "chart");
+    const h = el("h3", "", title); h.append(el("span", "", sub)); chart.append(h);
+    for (const d of rows) {
+      const row = el("div", "bar-row"); row.tabIndex = 0;
+      row.setAttribute("aria-label", d.marque + " " + d.produit + " : " + euro(d[measure]));
+      const label = el("div", "bar-label"); label.append(el("strong", "", d.marque), document.createTextNode(" "), el("span", "", d.produit));
+      const plot = el("div", "plot");
+      const bar = el("div", "bar" + (d.produit.includes("Winter Edition") ? " is-accent" : ""));
+      const pct = d[measure] / MAX * 100;
+      bar.style.width = pct + "%";
+      const value = el("span", "bar-value", euro(d[measure])); value.style.left = "calc(" + pct + "% + 8px)";
+      plot.append(bar, el("div", "ref"), value);
+      row.append(label, plot);
+      row.addEventListener("pointermove", e => showTip(d, e.clientX, e.clientY));
+      row.addEventListener("pointerleave", () => { tip.hidden = true; });
+      row.addEventListener("focus", () => { const r = plot.getBoundingClientRect(); showTip(d, r.left, r.bottom); });
+      row.addEventListener("blur", () => { tip.hidden = true; });
+      chart.append(row);
+    }
+    const axis = el("div", "axis"), ticks = el("div");
+    for (let t = 0; t <= 2.5; t += 0.5) { const s = el("span", "", euro(t)); s.style.left = (t / MAX * 100) + "%"; ticks.append(s); }
+    axis.append(el("div"), ticks); chart.append(axis);
+    root.append(chart);
+  }
+}
+document.querySelectorAll(".seg").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".seg").forEach(o => { const on = o === b; o.classList.toggle("is-on", on); o.setAttribute("aria-pressed", on); });
+  drawCharts(b.dataset.measure);
+}));
+drawCharts("p25");
+</script>
+
+</body>
+</html>
