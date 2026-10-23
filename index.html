@@ -107,6 +107,8 @@
   .bar-label { font-size: .88rem; line-height: 1.3; text-align: right; }
   .bar-label strong { display: block; }
   .bar-label span { color: var(--muted); }
+  .bar-label a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line); }
+  .bar-label a:hover { color: var(--gold); }
   .plot { position: relative; height: 22px; margin-right: 58px;
           background: repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px calc(100% / 5.2)); }
   .bar { position: absolute; left: 0; top: 4px; height: 14px; border-radius: 0 4px 4px 0; transition: width .3s; }
@@ -130,6 +132,8 @@
   .pc-legend .lg-line { width: 18px; height: 2px; border-radius: 0; background: var(--text); }
   .pc-legend .lg-zone { width: 8px; height: 14px; background: #6b5f58; }
   .price-chart .ck { font-size: 12px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+  .price-chart .pc-seg { cursor: help; outline: none; }
+  .price-chart .pc-seg:hover, .price-chart .pc-seg:focus-visible { filter: brightness(1.2); }
   .price-chart .cs { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .price-chart .ct { font-size: 15px; font-weight: 700; fill: var(--text); paint-order: stroke; stroke: var(--night-2); stroke-width: 5px; }
   .price-chart .cn { font-size: 14px; font-weight: 600; fill: var(--text); }
@@ -143,6 +147,16 @@
   .calc .formula { background: var(--night-2); border-left: 3px solid var(--gold-soft); border-radius: 0 10px 10px 0; padding: 10px 16px; font-variant-numeric: tabular-nums; }
   .calc .calc-table { min-width: 0; }
   .calc .table-wrap { margin-bottom: 14px; }
+
+  .pc-conclusion { margin: 16px 0 0; font-size: 1.05rem; }
+  .pc-conclusion strong { color: var(--gold); }
+  .limits { margin-top: 30px; background: rgba(179, 18, 46, .16); border: 1px solid rgba(179, 18, 46, .6); border-left: 5px solid var(--red);
+            border-radius: 0 14px 14px 0; padding: 18px 22px; }
+  .limits h4 { margin: 0 0 10px; font-size: 1.15rem; color: var(--text); }
+  .limits ul { margin: 0; padding-left: 20px; }
+  .limits li { margin-bottom: 8px; }
+  .limits li:last-child { margin-bottom: 0; }
+  .limits strong { color: var(--gold); }
 
   footer { border-top: 1px solid var(--line); padding: 36px 0 48px; color: var(--muted); font-size: .88rem; }
   footer strong { color: var(--text); }
@@ -343,7 +357,7 @@
         <thead><tr><th>Marque et produit</th><th>Sans sucres ?</th><th class="num">Contenance</th><th class="num">Prix d'une canette</th><th class="num">Prix pour 25 cl</th><th>Promotion ou remarque</th></tr></thead>
         <tbody>
         <tr>
-          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sans-sucres-red-bull-9002490208592" target="_blank" rel="noopener">Sans Sucres (Sugarfree)</a></td>
+          <td><strong>Red Bull</strong><br>Sans Sucres (Sugarfree)</td>
           <td>Oui</td>
           <td class="num">25 cl</td>
           <td class="num">1,25 €</td>
@@ -351,7 +365,7 @@
           <td>Promo : le 2e à -30 %</td>
         </tr>
         <tr>
-          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sans-sucres-red-bull-9002490200381" target="_blank" rel="noopener">Sans Sucres - pack</a></td>
+          <td><strong>Red Bull</strong><br>Sans Sucres - pack</td>
           <td>Oui</td>
           <td class="num">25 cl</td>
           <td class="num">1,14 €</td>
@@ -359,7 +373,7 @@
           <td>Pack de 4</td>
         </tr>
         <tr>
-          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-zero-red-bull-9002490278151" target="_blank" rel="noopener">Zéro</a></td>
+          <td><strong>Red Bull</strong><br>Zéro</td>
           <td>Oui</td>
           <td class="num">25 cl</td>
           <td class="num">1,29 €</td>
@@ -367,7 +381,7 @@
           <td>Promo : le 2e à -30 %</td>
         </tr>
         <tr>
-          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-zero-red-bull-9002490278199" target="_blank" rel="noopener">Zéro - pack</a></td>
+          <td><strong>Red Bull</strong><br>Zéro - pack</td>
           <td>Oui</td>
           <td class="num">25 cl</td>
           <td class="num">1,25 €</td>
@@ -375,7 +389,7 @@
           <td>Pack de 4</td>
         </tr>
         <tr class="hl">
-          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-winter-edition-sans-sucres-gout-pistache-fruits-des-bois-red-bull-9002490305055" target="_blank" rel="noopener">Winter Edition Sans Sucres Pistache &amp; Fruits des bois</a></td>
+          <td><strong>Red Bull</strong><br>Winter Edition Sans Sucres Pistache &amp; Fruits des bois</td>
           <td>Oui</td>
           <td class="num">25 cl</td>
           <td class="num">1,39 €</td>
@@ -383,7 +397,7 @@
           <td>Nouveauté + promo : le 2e à -30 %</td>
         </tr>
         <tr class="hl">
-          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-gout-pistache-et-fruits-des-bois-winter-edition-red-bull-9002490290337" target="_blank" rel="noopener">Winter Edition Pistache &amp; Fruits des bois</a></td>
+          <td><strong>Red Bull</strong><br>Winter Edition Pistache &amp; Fruits des bois</td>
           <td>Non</td>
           <td class="num">25 cl</td>
           <td class="num">1,45 €</td>
@@ -391,7 +405,7 @@
           <td>Nouveauté + promo : le 2e à -30 %</td>
         </tr>
         <tr>
-          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-red-bull-9002490205973" target="_blank" rel="noopener">Classique (référence)</a></td>
+          <td><strong>Red Bull</strong><br>Classique (référence)</td>
           <td>Non</td>
           <td class="num">25 cl</td>
           <td class="num">1,15 €</td>
@@ -399,7 +413,7 @@
           <td>Promo : le 2e à -30 %</td>
         </tr>
         <tr>
-          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-gout-abricot-fraise-red-bull-9002490255916" target="_blank" rel="noopener">Edition Abricot-Fraise</a></td>
+          <td><strong>Red Bull</strong><br>Edition Abricot-Fraise</td>
           <td>Non</td>
           <td class="num">25 cl</td>
           <td class="num">1,55 €</td>
@@ -407,7 +421,7 @@
           <td>Promo : le 2e à -30 %</td>
         </tr>
         <tr>
-          <td><strong>Red Bull</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-gout-pasteque-red-bull-9002490246594" target="_blank" rel="noopener">Edition Pastèque</a></td>
+          <td><strong>Red Bull</strong><br>Edition Pastèque</td>
           <td>Non</td>
           <td class="num">25 cl</td>
           <td class="num">1,59 €</td>
@@ -415,7 +429,7 @@
           <td>Promo : le 2e à -30 %</td>
         </tr>
         <tr>
-          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sans-sucres-monster-5060335635808" target="_blank" rel="noopener">Sans Sucres</a></td>
+          <td><strong>Monster</strong><br>Sans Sucres</td>
           <td>Oui</td>
           <td class="num">50 cl</td>
           <td class="num">1,89 €</td>
@@ -423,7 +437,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-zero-sucres-monster-5060947549753" target="_blank" rel="noopener">Zéro Sucres</a></td>
+          <td><strong>Monster</strong><br>Zéro Sucres</td>
           <td>Oui</td>
           <td class="num">50 cl</td>
           <td class="num">1,79 €</td>
@@ -431,7 +445,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-ultra-paradise-zero-sucre-monster-5060639127139" target="_blank" rel="noopener">Ultra Paradise Zéro Sucre</a></td>
+          <td><strong>Monster</strong><br>Ultra Paradise Zéro Sucre</td>
           <td>Oui</td>
           <td class="num">50 cl</td>
           <td class="num">1,45 €</td>
@@ -439,7 +453,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sans-sucres-ultra-peach-keen-monster-5061013945363" target="_blank" rel="noopener">Ultra Peach Keen Sans Sucres</a></td>
+          <td><strong>Monster</strong><br>Ultra Peach Keen Sans Sucres</td>
           <td>Oui</td>
           <td class="num">50 cl</td>
           <td class="num">1,59 €</td>
@@ -447,7 +461,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Monster</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-ultra-rosa-monster-5060947541184" target="_blank" rel="noopener">Ultra Rosa</a></td>
+          <td><strong>Monster</strong><br>Ultra Rosa</td>
           <td>Oui</td>
           <td class="num">50 cl</td>
           <td class="num">1,85 €</td>
@@ -455,7 +469,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Celsius</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-sparkling-fraise-pasteque-zero-sucre-celsius-6430056289953" target="_blank" rel="noopener">Sparkling Fraise-Pastèque Zéro Sucre</a></td>
+          <td><strong>Celsius</strong><br>Sparkling Fraise-Pastèque Zéro Sucre</td>
           <td>Oui</td>
           <td class="num">35.5 cl</td>
           <td class="num">1,49 €</td>
@@ -463,7 +477,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Celsius</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-petillante-saveur-mangue-citron-zero-sucre-celsius-6430056289892" target="_blank" rel="noopener">Pétillante Mangue Citron Zéro Sucre</a></td>
+          <td><strong>Celsius</strong><br>Pétillante Mangue Citron Zéro Sucre</td>
           <td>Oui</td>
           <td class="num">33.5 cl</td>
           <td class="num">1,59 €</td>
@@ -471,7 +485,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Ciao</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-gout-kiwi-concombre-cafeine-et-guarana-energy-ciao-3770037280177" target="_blank" rel="noopener">Energy Kiwi Concombre</a></td>
+          <td><strong>Ciao</strong><br>Energy Kiwi Concombre</td>
           <td>Non (moins sucré : 4g/100ml + stévia)</td>
           <td class="num">25 cl</td>
           <td class="num">1,49 €</td>
@@ -479,7 +493,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Ciao</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-pomme-rhubarbe-energy-ciao-3770037280153" target="_blank" rel="noopener">Energy Pomme Rhubarbe</a></td>
+          <td><strong>Ciao</strong><br>Energy Pomme Rhubarbe</td>
           <td>Non (moins sucré : 4g/100ml + stévia)</td>
           <td class="num">25 cl</td>
           <td class="num">1,49 €</td>
@@ -495,7 +509,7 @@
         <thead><tr><th>Marque et produit</th><th>Sans sucres ?</th><th class="num">Contenance</th><th class="num">Prix d'une canette</th><th class="num">Prix pour 25 cl</th><th>Promotion ou remarque</th></tr></thead>
         <tbody>
         <tr>
-          <td><strong>Coca-Cola</strong><br><a href="https://www.carrefour.fr/p/soda-au-cola-zero-sucres-coca-cola-5449000243195" target="_blank" rel="noopener">Zéro Sucres - pack</a></td>
+          <td><strong>Coca-Cola</strong><br>Zéro Sucres - pack</td>
           <td>Oui</td>
           <td class="num">33 cl</td>
           <td class="num">0,59 €</td>
@@ -503,7 +517,7 @@
           <td>Pack de 6 (pas de canette 33 cL seule en ligne), Promo : le 2ème à -30%</td>
         </tr>
         <tr>
-          <td><strong>Coca-Cola</strong><br><a href="https://www.carrefour.fr/p/soda-au-cola-zero-sucres-coca-cola-5449000177650" target="_blank" rel="noopener">Zéro Sucres canette</a></td>
+          <td><strong>Coca-Cola</strong><br>Zéro Sucres canette</td>
           <td>Oui</td>
           <td class="num">50 cl</td>
           <td class="num">1,19 €</td>
@@ -511,7 +525,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Starbucks</strong><br><a href="https://www.carrefour.fr/p/boisson-lactee-au-cafe-arabica-triple-shot-espresso-allege-en-sucres-starbucks-5711953194511" target="_blank" rel="noopener">Triple Shot Espresso allégé en sucres</a></td>
+          <td><strong>Starbucks</strong><br>Triple Shot Espresso allégé en sucres</td>
           <td>Non (allégé)</td>
           <td class="num">30 cl</td>
           <td class="num">2,59 €</td>
@@ -519,7 +533,7 @@
           <td>Aucune</td>
         </tr>
         <tr>
-          <td><strong>Starbucks</strong><br><a href="https://www.carrefour.fr/p/boisson-cafe-frappuccino-starbucks-5711953161735" target="_blank" rel="noopener">Frappuccino café</a></td>
+          <td><strong>Starbucks</strong><br>Frappuccino café</td>
           <td>Non (9,5 g/100 g, dont sucre ajouté 5,5 %)</td>
           <td class="num">25 cl</td>
           <td class="num">2,45 €</td>
@@ -527,7 +541,7 @@
           <td>Promo : le 2ème à -60%</td>
         </tr>
         <tr>
-          <td><strong>Lipton</strong><br><a href="https://www.carrefour.fr/p/boisson-the-glace-peche-zero-sucres-lipton-3168930175605" target="_blank" rel="noopener">Thé glacé Pêche Zéro - pack</a></td>
+          <td><strong>Lipton</strong><br>Thé glacé Pêche Zéro - pack</td>
           <td>Oui</td>
           <td class="num">33 cl</td>
           <td class="num">0,67 €</td>
@@ -535,7 +549,7 @@
           <td>Pack de 6</td>
         </tr>
         <tr>
-          <td><strong>Fuze Tea</strong><br><a href="https://www.carrefour.fr/p/boisson-the-noir-glace-framboise-menthe-sans-sucres-fuze-tea-5449000041951" target="_blank" rel="noopener">Thé noir Framboise Menthe Sans Sucres</a></td>
+          <td><strong>Fuze Tea</strong><br>Thé noir Framboise Menthe Sans Sucres</td>
           <td>Oui</td>
           <td class="num">1,25 L</td>
           <td class="num">1,55 €</td>
@@ -551,7 +565,7 @@
         <thead><tr><th>Marque et produit</th><th>Sans sucres ?</th><th class="num">Contenance</th><th class="num">Prix d'une canette</th><th class="num">Prix pour 25 cl</th><th>Promotion ou remarque</th></tr></thead>
         <tbody>
         <tr>
-          <td><strong>Psychik (premier prix)</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-zero-psychik-8714800030038" target="_blank" rel="noopener">Zéro</a></td>
+          <td><strong>Psychik (premier prix)</strong><br>Zéro</td>
           <td>Non</td>
           <td class="num">25 cl</td>
           <td class="num">0,49 €</td>
@@ -559,7 +573,7 @@
           <td>Marque distributeur</td>
         </tr>
         <tr>
-          <td><strong>Psychik (premier prix)</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-psychik-8711900013213" target="_blank" rel="noopener">Classique</a></td>
+          <td><strong>Psychik (premier prix)</strong><br>Classique</td>
           <td>Non</td>
           <td class="num">25 cl</td>
           <td class="num">0,59 €</td>
@@ -567,7 +581,7 @@
           <td>Marque distributeur</td>
         </tr>
         <tr>
-          <td><strong>Psychik (premier prix)</strong><br><a href="https://www.carrefour.fr/p/boisson-energisante-psychik-3608330128561" target="_blank" rel="noopener">Classique - pack</a></td>
+          <td><strong>Psychik (premier prix)</strong><br>Classique - pack</td>
           <td>Non</td>
           <td class="num">25 cl</td>
           <td class="num">0,50 €</td>
@@ -579,14 +593,14 @@
     </div>
     </details>
 
-    <p class="legal">Source : Carrefour.fr, prix affichés en ligne le 1er octobre 2026. Les promotions sont indiquées dans la dernière colonne et ne sont pas déduites des prix. Chaque nom de produit renvoie à la page relevée.</p>
+    <p class="legal">Source : Carrefour.fr, prix affichés en ligne le 1er octobre 2026. Les promotions sont indiquées dans la dernière colonne et ne sont pas déduites des prix. Chaque nom de produit, dans les graphiques, renvoie à la page relevée.</p>
   </div>
 </section>
 
 <section id="prix-accepte">
   <div class="wrap">
     <h2 class="section-title">Le prix accepté</h2>
-    <p class="section-lead">Où va l'argent d'une canette, au prix que les répondants acceptent, avec et sans la mention « édition limitée ».</p>
+    <p class="section-lead">Où va l'argent d'une canette, au prix que les répondants acceptent, avec et sans la mention « édition limitée ». Passez la souris sur une couleur pour voir son calcul.</p>
     <div class="price-chart">
       <div class="pc-legend"><span><i style="background:#3987e5"></i>Coût de la canette pour Red Bull</span><span><i style="background:#199e70"></i>Marge de Red Bull</span><span><i style="background:#c98500"></i>TVA</span><span><i style="background:#d55181"></i>Marge du magasin</span><span><i class="lg-line"></i>Plafond des concurrents</span><span><i class="lg-zone"></i>Zone de prix acceptable (Van Westendorp)</span></div>
       <svg viewBox="0 0 700 420" role="img" aria-label="Décomposition du prix accepté d'une canette : version A 1,73 €, version B 1,59 €, plafond des concurrents 1,80 €">
@@ -610,27 +624,27 @@
 <text x="48" y="28.0" text-anchor="end" class="ck">2,00 €</text>
 <line x1="56" x2="560" y1="58.2" y2="58.2" stroke="#f6ece0" stroke-width="2"/>
 <text x="566" y="62.2" class="cr">Plafond : 1,80 €</text>
-<rect x="131.5" y="250.0" width="96" height="116.0" fill="#3987e5" rx="0"><title>Coût de la canette pour Red Bull : 0,69 €</title></rect>
+<rect x="131.5" y="250.0" width="96" height="116.0" fill="#3987e5" rx="0" class="pc-seg" tabindex="0" data-titre="Coût de la canette pour Red Bull — Version A" data-valeur="0,69 €" data-calcul="Coûts de Red Bull en 2025 : 12,196 − 2,545 = 9,651 milliards €, répartis sur 13,969 milliards de canettes : 9,651 ÷ 13,969 = 0,69 €."/>
 <text x="179.5" y="312.0" text-anchor="middle" class="cs" fill="#fff">0,69 €</text>
-<rect x="131.5" y="124.0" width="96" height="124.0" fill="#199e70" rx="0"><title>Marge de Red Bull : 0,74 €</title></rect>
+<rect x="131.5" y="124.0" width="96" height="124.0" fill="#199e70" rx="0" class="pc-seg" tabindex="0" data-titre="Marge de Red Bull — Version A" data-valeur="0,74 €" data-calcul="Ce qui reste : 1,73 − 0,09 (TVA) − 0,21 (magasin) − 0,69 (coût) = 0,74 €."/>
 <text x="179.5" y="190.0" text-anchor="middle" class="cs" fill="#fff">0,74 €</text>
-<rect x="131.5" y="108.6" width="96" height="13.4" fill="#c98500" rx="0"><title>TVA : 0,09 €</title></rect>
-<rect x="131.5" y="70.2" width="96" height="36.5" fill="#d55181" rx="4"><title>Marge du magasin : 0,21 €</title></rect>
+<rect x="131.5" y="108.6" width="96" height="13.4" fill="#c98500" rx="0" class="pc-seg" tabindex="0" data-titre="TVA — Version A" data-valeur="0,09 €" data-calcul="TVA à 5,5 % comprise dans le prix : prix hors taxes = 1,73 ÷ 1,055 = 1,64 €, donc TVA = 1,73 − 1,64 = 0,09 €."/>
+<rect x="131.5" y="70.2" width="96" height="36.5" fill="#d55181" rx="4" class="pc-seg" tabindex="0" data-titre="Marge du magasin — Version A" data-valeur="0,21 €" data-calcul="13 % du prix hors taxes : 1,64 × 0,13 = 0,21 €."/>
 <text x="179.5" y="94.4" text-anchor="middle" class="cs" fill="#fff">0,21 €</text>
-<rect x="237.5" y="49.6" width="8" height="78.7" rx="3" fill="#6b5f58"><title>Zone de prix acceptable : 1,39 € à 1,85 €</title></rect>
+<rect x="237.5" y="49.6" width="8" height="78.7" rx="3" fill="#6b5f58" class="pc-seg" tabindex="0" data-titre="Zone de prix acceptable — Version A" data-valeur="1,39 € à 1,85 €" data-calcul="Van Westendorp : entre le point marginal de bon marché (1,39 €) et le point marginal de cherté (1,85 €), calculés sur les réponses de cette version."/>
 <text x="250.5" y="53.6" class="ck">1,85 €</text>
 <text x="250.5" y="132.3" class="ck">1,39 €</text>
 <text x="179.5" y="62.2" text-anchor="middle" class="ct">1,73 €</text>
 <text x="179.5" y="388" text-anchor="middle" class="cn">Version A</text>
 <text x="179.5" y="406" text-anchor="middle" class="ck">avec « édition limitée »</text>
-<rect x="378.5" y="250.0" width="96" height="116.0" fill="#3987e5" rx="0"><title>Coût de la canette pour Red Bull : 0,69 €</title></rect>
+<rect x="378.5" y="250.0" width="96" height="116.0" fill="#3987e5" rx="0" class="pc-seg" tabindex="0" data-titre="Coût de la canette pour Red Bull — Version B" data-valeur="0,69 €" data-calcul="Coûts de Red Bull en 2025 : 12,196 − 2,545 = 9,651 milliards €, répartis sur 13,969 milliards de canettes : 9,651 ÷ 13,969 = 0,69 €."/>
 <text x="426.5" y="312.0" text-anchor="middle" class="cs" fill="#fff">0,69 €</text>
-<rect x="378.5" y="143.8" width="96" height="104.2" fill="#199e70" rx="0"><title>Marge de Red Bull : 0,62 €</title></rect>
+<rect x="378.5" y="143.8" width="96" height="104.2" fill="#199e70" rx="0" class="pc-seg" tabindex="0" data-titre="Marge de Red Bull — Version B" data-valeur="0,62 €" data-calcul="Ce qui reste : 1,59 − 0,08 (TVA) − 0,20 (magasin) − 0,69 (coût) = 0,62 €."/>
 <text x="426.5" y="199.9" text-anchor="middle" class="cs" fill="#fff">0,62 €</text>
-<rect x="378.5" y="129.6" width="96" height="12.2" fill="#c98500" rx="0"><title>TVA : 0,08 €</title></rect>
-<rect x="378.5" y="94.1" width="96" height="33.5" fill="#d55181" rx="4"><title>Marge du magasin : 0,20 €</title></rect>
+<rect x="378.5" y="129.6" width="96" height="12.2" fill="#c98500" rx="0" class="pc-seg" tabindex="0" data-titre="TVA — Version B" data-valeur="0,08 €" data-calcul="TVA à 5,5 % comprise dans le prix : prix hors taxes = 1,59 ÷ 1,055 = 1,51 €, donc TVA = 1,59 − 1,51 = 0,08 €."/>
+<rect x="378.5" y="94.1" width="96" height="33.5" fill="#d55181" rx="4" class="pc-seg" tabindex="0" data-titre="Marge du magasin — Version B" data-valeur="0,20 €" data-calcul="13 % du prix hors taxes : 1,51 × 0,13 = 0,20 €."/>
 <text x="426.5" y="116.9" text-anchor="middle" class="cs" fill="#fff">0,20 €</text>
-<rect x="484.5" y="75.3" width="8" height="76.9" rx="3" fill="#6b5f58"><title>Zone de prix acceptable : 1,25 € à 1,70 €</title></rect>
+<rect x="484.5" y="75.3" width="8" height="76.9" rx="3" fill="#6b5f58" class="pc-seg" tabindex="0" data-titre="Zone de prix acceptable — Version B" data-valeur="1,25 € à 1,70 €" data-calcul="Van Westendorp : entre le point marginal de bon marché (1,25 €) et le point marginal de cherté (1,70 €), calculés sur les réponses de cette version."/>
 <text x="497.5" y="79.3" class="ck">1,70 €</text>
 <text x="497.5" y="156.2" class="ck">1,25 €</text>
 <text x="426.5" y="86.1" text-anchor="middle" class="ct">1,59 €</text>
@@ -638,6 +652,7 @@
 <text x="426.5" y="406" text-anchor="middle" class="ck">sans « édition limitée »</text>
 <line x1="56" x2="560" y1="366.0" y2="366.0" stroke="#c8b6a6"/>
 </svg>
+      <p class="pc-conclusion">Avec la mention « édition limitée », le prix accepté monte de <strong>0,14 €</strong>. Après la TVA et la marge du magasin, Red Bull en garde environ <strong>0,12 €</strong>.</p>
     </div>
 
     <div class="calc">
@@ -662,24 +677,14 @@
       <h4>5. La marge de Red Bull</h4>
       <p class="formula">Marge de Red Bull = prix − TVA − marge du magasin − coût de la canette</p>
 
-      <h4>Le détail pour chaque version</h4>
-      <div class="table-wrap">
-        <table class="calc-table">
-          <thead><tr><th>Étape</th><th class="num">Version A</th><th class="num">Version B</th></tr></thead>
-          <tbody>
-            <tr><td>Prix accepté (TTC)</td><td class="num">1,73 €</td><td class="num">1,59 €</td></tr>
-            <tr><td>Prix hors taxes (÷ 1,055)</td><td class="num">1,64 €</td><td class="num">1,51 €</td></tr>
-            <tr><td>TVA (prix − prix hors taxes)</td><td class="num">0,09 €</td><td class="num">0,08 €</td></tr>
-            <tr><td>Marge du magasin (13 % du prix hors taxes)</td><td class="num">0,21 €</td><td class="num">0,20 €</td></tr>
-            <tr><td>Coût de la canette</td><td class="num">0,69 €</td><td class="num">0,69 €</td></tr>
-            <tr class="hl"><td><strong>Marge de Red Bull (ce qui reste)</strong></td><td class="num"><strong>0,74 €</strong></td><td class="num"><strong>0,62 €</strong></td></tr>
-          </tbody>
-        </table>
+      <div class="limits">
+        <h4>⚠️ Les limites de ces résultats</h4>
+        <ul>
+          <li><strong>L'écart entre les versions A et B n'est pas statistiquement significatif</strong> : avec 41 et 30 répondants, il peut venir du hasard.</li>
+          <li><strong>Le coût de la canette est une estimation</strong> : une moyenne mondiale, tirée d'un article de presse et non des comptes officiels de Red Bull.</li>
+          <li><strong>La marge du magasin date de 2012</strong> et porte sur l'ensemble des boissons.</li>
+        </ul>
       </div>
-      <p>Avec la mention « édition limitée », le prix accepté monte de 0,14 €. Après la TVA et la marge du magasin, Red Bull en garde environ 0,12 €.</p>
-
-      <h4>Les limites</h4>
-      <p class="legal">L'écart entre les versions A et B n'est pas statistiquement significatif, et le contrôle de manipulation n'a pas montré que la mention « édition limitée » avait été nettement perçue. Le coût de la canette est une moyenne mondiale, et le bénéfice de Red Bull vient d'un article de presse, non de ses comptes officiels. La marge de 13 % date de 2012 et porte sur l'ensemble des boissons.</p>
     </div>
   </div>
 </section>
@@ -693,7 +698,7 @@
 
 <script>
 // Relevé de prix Carrefour.fr du 1er octobre 2026 (fichier Excel du projet)
-const PRIX = [{"cercle": "Direct", "marque": "Red Bull", "produit": "Sans Sucres (Sugarfree)", "sansSucre": "Oui", "canette": 1.25, "ml": 250.0, "p25": 1.25, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Sans Sucres - pack", "sansSucre": "Oui", "canette": 1.14, "ml": 250.0, "p25": 1.14, "promo": "Pack de 4"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Zéro", "sansSucre": "Oui", "canette": 1.29, "ml": 250.0, "p25": 1.29, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Zéro - pack", "sansSucre": "Oui", "canette": 1.25, "ml": 250.0, "p25": 1.25, "promo": "Pack de 4"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Winter Edition Sans Sucres Pistache & Fruits des bois", "sansSucre": "Oui", "canette": 1.39, "ml": 250.0, "p25": 1.39, "promo": "Nouveauté + promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Winter Edition Pistache & Fruits des bois", "sansSucre": "Non", "canette": 1.45, "ml": 250.0, "p25": 1.45, "promo": "Nouveauté + promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Classique (référence)", "sansSucre": "Non", "canette": 1.15, "ml": 250.0, "p25": 1.15, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Edition Abricot-Fraise", "sansSucre": "Non", "canette": 1.55, "ml": 250.0, "p25": 1.55, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Edition Pastèque", "sansSucre": "Non", "canette": 1.59, "ml": 250.0, "p25": 1.59, "promo": "Promo : le 2e à -30 %"}, {"cercle": "Direct", "marque": "Monster", "produit": "Sans Sucres", "sansSucre": "Oui", "canette": 1.89, "ml": 500.0, "p25": 0.95, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Monster", "produit": "Zéro Sucres", "sansSucre": "Oui", "canette": 1.79, "ml": 500.0, "p25": 0.9, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Monster", "produit": "Ultra Paradise Zéro Sucre", "sansSucre": "Oui", "canette": 1.45, "ml": 500.0, "p25": 0.73, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Monster", "produit": "Ultra Peach Keen Sans Sucres", "sansSucre": "Oui", "canette": 1.59, "ml": 500.0, "p25": 0.8, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Monster", "produit": "Ultra Rosa", "sansSucre": "Oui", "canette": 1.85, "ml": 500.0, "p25": 0.93, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Celsius", "produit": "Sparkling Fraise-Pastèque Zéro Sucre", "sansSucre": "Oui", "canette": 1.49, "ml": 355.0, "p25": 1.05, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Celsius", "produit": "Pétillante Mangue Citron Zéro Sucre", "sansSucre": "Oui", "canette": 1.59, "ml": 335.0, "p25": 1.19, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Ciao", "produit": "Energy Kiwi Concombre", "sansSucre": "Non (moins sucré : 4g/100ml + stévia)", "canette": 1.49, "ml": 250.0, "p25": 1.49, "promo": "Aucune"}, {"cercle": "Direct", "marque": "Ciao", "produit": "Energy Pomme Rhubarbe", "sansSucre": "Non (moins sucré : 4g/100ml + stévia)", "canette": 1.49, "ml": 250.0, "p25": 1.49, "promo": "Aucune"}, {"cercle": "Oubliés", "marque": "Psychik (premier prix)", "produit": "Zéro", "sansSucre": "Non", "canette": 0.49, "ml": 250.0, "p25": 0.49, "promo": "Marque distributeur"}, {"cercle": "Oubliés", "marque": "Psychik (premier prix)", "produit": "Classique", "sansSucre": "Non", "canette": 0.59, "ml": 250.0, "p25": 0.59, "promo": "Marque distributeur"}, {"cercle": "Oubliés", "marque": "Psychik (premier prix)", "produit": "Classique - pack", "sansSucre": "Non", "canette": 0.5, "ml": 250.0, "p25": 0.5, "promo": "Pack de 6"}, {"cercle": "Indirect", "marque": "Coca-Cola", "produit": "Zéro Sucres - pack", "sansSucre": "Oui", "canette": 0.59, "ml": 330.0, "p25": 0.44, "promo": "Pack de 6 (pas de canette 33 cL seule en ligne), Promo : le 2ème à -30%"}, {"cercle": "Indirect", "marque": "Coca-Cola", "produit": "Zéro Sucres canette", "sansSucre": "Oui", "canette": 1.19, "ml": 500.0, "p25": 0.6, "promo": "Aucune"}, {"cercle": "Indirect", "marque": "Starbucks", "produit": "Triple Shot Espresso allégé en sucres", "sansSucre": "Non (allégé)", "canette": 2.59, "ml": 300.0, "p25": 2.16, "promo": "Aucune"}, {"cercle": "Indirect", "marque": "Starbucks", "produit": "Frappuccino café", "sansSucre": "Non (9,5 g/100 g, dont sucre ajouté 5,5 %)", "canette": 2.45, "ml": 250.0, "p25": 2.45, "promo": "Promo : le 2ème à -60%"}, {"cercle": "Indirect", "marque": "Lipton", "produit": "Thé glacé Pêche Zéro - pack", "sansSucre": "Oui", "canette": 0.67, "ml": 330.0, "p25": 0.5, "promo": "Pack de 6"}, {"cercle": "Indirect", "marque": "Fuze Tea", "produit": "Thé noir Framboise Menthe Sans Sucres", "sansSucre": "Oui", "canette": 1.55, "ml": 1250.0, "p25": 0.31, "promo": "Bouteille 1,25 L"}];
+const PRIX = [{"cercle": "Direct", "marque": "Red Bull", "produit": "Sans Sucres (Sugarfree)", "sansSucre": "Oui", "canette": 1.25, "ml": 250.0, "p25": 1.25, "promo": "Promo : le 2e à -30 %", "url": "https://www.carrefour.fr/p/boisson-energisante-sans-sucres-red-bull-9002490208592"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Sans Sucres - pack", "sansSucre": "Oui", "canette": 1.14, "ml": 250.0, "p25": 1.14, "promo": "Pack de 4", "url": "https://www.carrefour.fr/p/boisson-energisante-sans-sucres-red-bull-9002490200381"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Zéro", "sansSucre": "Oui", "canette": 1.29, "ml": 250.0, "p25": 1.29, "promo": "Promo : le 2e à -30 %", "url": "https://www.carrefour.fr/p/boisson-energisante-zero-red-bull-9002490278151"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Zéro - pack", "sansSucre": "Oui", "canette": 1.25, "ml": 250.0, "p25": 1.25, "promo": "Pack de 4", "url": "https://www.carrefour.fr/p/boisson-energisante-zero-red-bull-9002490278199"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Winter Edition Sans Sucres Pistache & Fruits des bois", "sansSucre": "Oui", "canette": 1.39, "ml": 250.0, "p25": 1.39, "promo": "Nouveauté + promo : le 2e à -30 %", "url": "https://www.carrefour.fr/p/boisson-energisante-winter-edition-sans-sucres-gout-pistache-fruits-des-bois-red-bull-9002490305055"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Winter Edition Pistache & Fruits des bois", "sansSucre": "Non", "canette": 1.45, "ml": 250.0, "p25": 1.45, "promo": "Nouveauté + promo : le 2e à -30 %", "url": "https://www.carrefour.fr/p/boisson-energisante-gout-pistache-et-fruits-des-bois-winter-edition-red-bull-9002490290337"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Classique (référence)", "sansSucre": "Non", "canette": 1.15, "ml": 250.0, "p25": 1.15, "promo": "Promo : le 2e à -30 %", "url": "https://www.carrefour.fr/p/boisson-energisante-red-bull-9002490205973"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Edition Abricot-Fraise", "sansSucre": "Non", "canette": 1.55, "ml": 250.0, "p25": 1.55, "promo": "Promo : le 2e à -30 %", "url": "https://www.carrefour.fr/p/boisson-energisante-gout-abricot-fraise-red-bull-9002490255916"}, {"cercle": "Direct", "marque": "Red Bull", "produit": "Edition Pastèque", "sansSucre": "Non", "canette": 1.59, "ml": 250.0, "p25": 1.59, "promo": "Promo : le 2e à -30 %", "url": "https://www.carrefour.fr/p/boisson-energisante-gout-pasteque-red-bull-9002490246594"}, {"cercle": "Direct", "marque": "Monster", "produit": "Sans Sucres", "sansSucre": "Oui", "canette": 1.89, "ml": 500.0, "p25": 0.95, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-energisante-sans-sucres-monster-5060335635808"}, {"cercle": "Direct", "marque": "Monster", "produit": "Zéro Sucres", "sansSucre": "Oui", "canette": 1.79, "ml": 500.0, "p25": 0.9, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-energisante-zero-sucres-monster-5060947549753"}, {"cercle": "Direct", "marque": "Monster", "produit": "Ultra Paradise Zéro Sucre", "sansSucre": "Oui", "canette": 1.45, "ml": 500.0, "p25": 0.73, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-energisante-ultra-paradise-zero-sucre-monster-5060639127139"}, {"cercle": "Direct", "marque": "Monster", "produit": "Ultra Peach Keen Sans Sucres", "sansSucre": "Oui", "canette": 1.59, "ml": 500.0, "p25": 0.8, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-energisante-sans-sucres-ultra-peach-keen-monster-5061013945363"}, {"cercle": "Direct", "marque": "Monster", "produit": "Ultra Rosa", "sansSucre": "Oui", "canette": 1.85, "ml": 500.0, "p25": 0.93, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-energisante-ultra-rosa-monster-5060947541184"}, {"cercle": "Direct", "marque": "Celsius", "produit": "Sparkling Fraise-Pastèque Zéro Sucre", "sansSucre": "Oui", "canette": 1.49, "ml": 355.0, "p25": 1.05, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-energisante-sparkling-fraise-pasteque-zero-sucre-celsius-6430056289953"}, {"cercle": "Direct", "marque": "Celsius", "produit": "Pétillante Mangue Citron Zéro Sucre", "sansSucre": "Oui", "canette": 1.59, "ml": 335.0, "p25": 1.19, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-energisante-petillante-saveur-mangue-citron-zero-sucre-celsius-6430056289892"}, {"cercle": "Direct", "marque": "Ciao", "produit": "Energy Kiwi Concombre", "sansSucre": "Non (moins sucré : 4g/100ml + stévia)", "canette": 1.49, "ml": 250.0, "p25": 1.49, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-energisante-gout-kiwi-concombre-cafeine-et-guarana-energy-ciao-3770037280177"}, {"cercle": "Direct", "marque": "Ciao", "produit": "Energy Pomme Rhubarbe", "sansSucre": "Non (moins sucré : 4g/100ml + stévia)", "canette": 1.49, "ml": 250.0, "p25": 1.49, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-energisante-pomme-rhubarbe-energy-ciao-3770037280153"}, {"cercle": "Oubliés", "marque": "Psychik (premier prix)", "produit": "Zéro", "sansSucre": "Non", "canette": 0.49, "ml": 250.0, "p25": 0.49, "promo": "Marque distributeur", "url": "https://www.carrefour.fr/p/boisson-energisante-zero-psychik-8714800030038"}, {"cercle": "Oubliés", "marque": "Psychik (premier prix)", "produit": "Classique", "sansSucre": "Non", "canette": 0.59, "ml": 250.0, "p25": 0.59, "promo": "Marque distributeur", "url": "https://www.carrefour.fr/p/boisson-energisante-psychik-8711900013213"}, {"cercle": "Oubliés", "marque": "Psychik (premier prix)", "produit": "Classique - pack", "sansSucre": "Non", "canette": 0.5, "ml": 250.0, "p25": 0.5, "promo": "Pack de 6", "url": "https://www.carrefour.fr/p/boisson-energisante-psychik-3608330128561"}, {"cercle": "Indirect", "marque": "Coca-Cola", "produit": "Zéro Sucres - pack", "sansSucre": "Oui", "canette": 0.59, "ml": 330.0, "p25": 0.44, "promo": "Pack de 6 (pas de canette 33 cL seule en ligne), Promo : le 2ème à -30%", "url": "https://www.carrefour.fr/p/soda-au-cola-zero-sucres-coca-cola-5449000243195"}, {"cercle": "Indirect", "marque": "Coca-Cola", "produit": "Zéro Sucres canette", "sansSucre": "Oui", "canette": 1.19, "ml": 500.0, "p25": 0.6, "promo": "Aucune", "url": "https://www.carrefour.fr/p/soda-au-cola-zero-sucres-coca-cola-5449000177650"}, {"cercle": "Indirect", "marque": "Starbucks", "produit": "Triple Shot Espresso allégé en sucres", "sansSucre": "Non (allégé)", "canette": 2.59, "ml": 300.0, "p25": 2.16, "promo": "Aucune", "url": "https://www.carrefour.fr/p/boisson-lactee-au-cafe-arabica-triple-shot-espresso-allege-en-sucres-starbucks-5711953194511"}, {"cercle": "Indirect", "marque": "Starbucks", "produit": "Frappuccino café", "sansSucre": "Non (9,5 g/100 g, dont sucre ajouté 5,5 %)", "canette": 2.45, "ml": 250.0, "p25": 2.45, "promo": "Promo : le 2ème à -60%", "url": "https://www.carrefour.fr/p/boisson-cafe-frappuccino-starbucks-5711953161735"}, {"cercle": "Indirect", "marque": "Lipton", "produit": "Thé glacé Pêche Zéro - pack", "sansSucre": "Oui", "canette": 0.67, "ml": 330.0, "p25": 0.5, "promo": "Pack de 6", "url": "https://www.carrefour.fr/p/boisson-the-glace-peche-zero-sucres-lipton-3168930175605"}, {"cercle": "Indirect", "marque": "Fuze Tea", "produit": "Thé noir Framboise Menthe Sans Sucres", "sansSucre": "Oui", "canette": 1.55, "ml": 1250.0, "p25": 0.31, "promo": "Bouteille 1,25 L", "url": "https://www.carrefour.fr/p/boisson-the-noir-glace-framboise-menthe-sans-sucres-fuze-tea-5449000041951"}];
 const MAX = 2.6, NOTRE_PRIX = 1.45;
 const CERCLES = [["Direct", "Concurrents directs", "Les autres boissons énergisantes"],
                  ["Indirect", "Concurrents indirects", "Les autres façons de se donner un coup de boost"],
@@ -725,7 +730,8 @@ function drawCharts(measure) {
     for (const d of rows) {
       const row = el("div", "bar-row"); row.tabIndex = 0;
       row.setAttribute("aria-label", d.marque + " " + d.produit + " : " + euro(d[measure]));
-      const label = el("div", "bar-label"); label.append(el("strong", "", d.marque), document.createTextNode(" "), el("span", "", d.produit));
+      const label = el("div", "bar-label"); const lien = el("a", "", d.produit); lien.href = d.url; lien.target = "_blank"; lien.rel = "noopener";
+      label.append(el("strong", "", d.marque), document.createTextNode(" "), lien);
       const plot = el("div", "plot");
       const bar = el("div", "bar" + (d.produit.includes("Winter Edition") ? " is-accent" : ""));
       const pct = d[measure] / MAX * 100;
@@ -750,6 +756,28 @@ document.querySelectorAll(".seg").forEach(b => b.addEventListener("click", () =>
   drawCharts(b.dataset.measure);
 }));
 drawCharts("p25");
+</script>
+
+<script>
+// Graphique du prix accepté : au survol (ou au clavier), le détail du calcul de chaque couleur
+(() => {
+  const tip = document.getElementById("chart-tip");
+  const montrer = (r, x, y) => {
+    const b = document.createElement("b"); b.textContent = r.dataset.valeur;
+    const t = document.createElement("div"); t.textContent = r.dataset.titre; t.style.fontWeight = "600";
+    const c = document.createElement("div"); c.textContent = r.dataset.calcul; c.style.marginTop = "4px";
+    tip.replaceChildren(b, t, c); tip.hidden = false;
+    const box = tip.getBoundingClientRect();
+    tip.style.left = Math.max(8, Math.min(x + 14, innerWidth - box.width - 8)) + "px";
+    tip.style.top = Math.max(8, Math.min(y + 14, innerHeight - box.height - 8)) + "px";
+  };
+  document.querySelectorAll("#prix-accepte .pc-seg").forEach(r => {
+    r.addEventListener("pointermove", e => montrer(r, e.clientX, e.clientY));
+    r.addEventListener("pointerleave", () => { tip.hidden = true; });
+    r.addEventListener("focus", () => { const k = r.getBoundingClientRect(); montrer(r, k.right, k.top); });
+    r.addEventListener("blur", () => { tip.hidden = true; });
+  });
+})();
 </script>
 
 </body>
