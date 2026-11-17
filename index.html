@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Winter Edition Pomme d'amour — projet étudiant</title>
 <meta name="description" content="Projet étudiant fictif : une édition d'hiver sans sucres au goût pomme d'amour.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --night: #140b0a; --night-2: #1f1110; --card: #2a1614;
@@ -280,6 +281,73 @@
   .reco a { color: var(--gold); white-space: nowrap; }
   .top-photo { padding: 8px 0 40px; display: flex; justify-content: center; }
   .top-photo img { display: block; width: 100%; max-width: 420px; height: auto; border-radius: 20px; border: 1px solid var(--line); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+
+  /* ===== Style clair inspiré des pages produit, version Noël ===== */
+  :root {
+    --night: #f2f2ef; --night-2: #ffffff; --card: #ffffff;
+    --red: #c8102e; --red-deep: #8e0b20; --gold: #c8102e; --gold-soft: #b8892b;
+    --grid: rgba(14,26,43,.1); --text: #0e1a2b; --muted: #556070; --line: rgba(14,26,43,.12);
+    --pine: #1d5a43; --snow: #ffffff;
+  }
+  body { font-family: Inter, "Helvetica Neue", Arial, sans-serif; background: var(--night); }
+  h1, h2, h3, .section-title, .acc-text .section-title, .reco strong, .pf-big, .ent-v { font-family: Outfit, "Helvetica Neue", Arial, sans-serif !important; font-weight: 800 !important; letter-spacing: -.01em; }
+  .notice { background: var(--pine); color: #fff; }
+  .acc-lead, .acc-h { font-family: Inter, "Helvetica Neue", Arial, sans-serif !important; font-weight: 400 !important; letter-spacing: 0; }
+  .acc-text .section-title { font-family: Outfit, sans-serif !important; font-weight: 800 !important; }
+  /* menu en pilule */
+  header.nav { position: sticky; top: 10px; z-index: 20; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); border: 1px solid var(--line); border-radius: 999px; padding: 10px 22px; margin-top: 14px; box-shadow: 0 6px 24px rgba(14,26,43,.08); }
+  .brand { font-family: Outfit, sans-serif; font-weight: 800; letter-spacing: .12em; color: var(--red); }
+  nav a { color: var(--text); font-weight: 500; }
+  nav a:hover { color: var(--red); }
+  /* bandeau d'accueil */
+  .rb-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: center; margin: 22px 0 36px; padding: 36px 48px 0; border-radius: 28px; color: #fff;
+    background: radial-gradient(120% 90% at 85% 10%, #b3122e 0%, #7d0c20 45%, #3a0710 100%); }
+  .rb-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55;
+    background-image: radial-gradient(2px 2px at 23px 41px, #fff 60%, transparent 61%), radial-gradient(1.5px 1.5px at 151px 97px, #fff 60%, transparent 61%), radial-gradient(2.5px 2.5px at 87px 173px, #fff 60%, transparent 61%), radial-gradient(1.5px 1.5px at 211px 19px, #fff 60%, transparent 61%), radial-gradient(1px 1px at 59px 233px, #fff 60%, transparent 61%), radial-gradient(2px 2px at 269px 211px, #fff 60%, transparent 61%), radial-gradient(1px 1px at 131px 263px, #fff 60%, transparent 61%);
+    background-size: 290px 280px; animation: neige 18s linear infinite; }
+  @keyframes neige { from { background-position: 0 0; } to { background-position: 80px 560px; } }
+  @media (prefers-reduced-motion: reduce) { .rb-hero::before { animation: none; } }
+  .rb-hero > * { position: relative; }
+  .rb-eyebrow { font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; color: #f3d48a; margin-bottom: 14px; }
+  .rb-hero h1 { font-size: clamp(2.6rem, 7vw, 5rem); line-height: .95; color: #fff; margin: 0 0 18px; }
+  .rb-tag { display: inline-block; background: #f3d48a; color: #3a0710; font-weight: 700; font-size: .8rem; letter-spacing: .18em; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px; }
+  .rb-hero p { color: rgba(255,255,255,.85); max-width: 34ch; font-size: 1.05rem; }
+  .rb-hero .rb-pic { align-self: end; }
+  .rb-hero .rb-pic img { display: block; width: 100%; height: auto; aspect-ratio: 740 / 1100; object-fit: cover; max-width: 270px; margin: 0 auto; border-radius: 18px 18px 0 0; box-shadow: 0 -10px 40px rgba(0,0,0,.35); }
+  @media (max-width: 720px) { .rb-hero { grid-template-columns: 1fr; padding: 32px 22px 0; } }
+  .rb-banner { margin: 22px 0 36px; border-radius: 28px; overflow: hidden; box-shadow: 0 14px 40px rgba(14,26,43,.18); }
+  .rb-banner img { display: block; width: 100%; height: auto; }
+  @media (max-width: 600px) { .rb-banner { border-radius: 18px; margin: 16px 0 24px; } }
+  /* parties en cartes blanches */
+  section.acc { border-top: 0; }
+  section.acc > .wrap { background: #fff; border-radius: 22px; box-shadow: 0 4px 20px rgba(14,26,43,.06); margin-bottom: 14px; padding-left: 26px; padding-right: 26px; }
+  .acc-icon { background: var(--red); border: 0; box-shadow: 0 6px 16px rgba(200,16,46,.3); }
+  .acc-icon svg { stroke: #fff; }
+  .acc-head[aria-expanded="true"] .acc-icon { background: var(--pine); }
+  .acc-head[aria-expanded="true"] .acc-icon svg { stroke: #fff; }
+  .acc-text .section-title { color: var(--text) !important; }
+  .calc h3, .section-title { color: var(--text); }
+  h3.sub { color: var(--text); }
+  .calc .formula { background: #f6f6f3; border-left-color: var(--red); }
+  .calc-table th { color: var(--red); }
+  tr.hl td { background: rgba(200,16,46,.06); }
+  .seg.is-on { background: var(--red); color: #fff; }
+  .bulb, .pf-card, .ent-tile, .price-chart, .reco, .feature { background: #fff; }
+  .bulb[aria-expanded="true"] svg { stroke: #fff; }
+  .reco { border-color: rgba(200,16,46,.35); }
+  .chart-tip { background: var(--text); color: #fff; }
+  .flag { box-shadow: 0 0 0 1px rgba(14,26,43,.2); }
+  /* graphiques : couleurs claires codées en dur */
+  .price-chart svg [stroke="#f6ece0"], .vw-chart svg [stroke="#f6ece0"] { stroke: var(--text); }
+  .price-chart svg [stroke^="rgba(246,236,224"], .vw-chart svg [stroke^="rgba(246,236,224"], .ent-chart svg [stroke^="rgba(246,236,224"] { stroke: rgba(14,26,43,.12); }
+  .vw-chart svg [fill="rgba(230,197,138,.10)"] { fill: rgba(200,16,46,.07); }
+  .price-chart svg [fill="#6b5f58"] { fill: #9aa3ad; }
+  .pc-legend .lg-zone { background: #9aa3ad; }
+  .pc-legend .lg-line { background: var(--text); }
+  .vw-env { stroke: #fff !important; }
+  .acc-deco { flex: none; width: 104px; height: 104px; object-fit: contain; margin: -10px 4px -10px 0; transition: transform .25s; }
+  .acc-head:hover .acc-deco { transform: rotate(-6deg) scale(1.06); }
+  @media (max-width: 600px) { .acc-deco { width: 56px; height: 56px; } }
 </style>
 </head>
 <body>
@@ -298,14 +366,12 @@
       <a href="#decision">La décision</a>
     </nav>
   </header>
-  <div class="top-photo">
-    <img src="affiche.jpg" alt="Canette rouge Winter Edition Sugarfree goût pomme d'amour, posée dans la neige entre une pomme d'amour et une pomme au caramel" width="740" height="1100">
-  </div>
+  <div class="rb-banner"><img src="banniere.jpg" alt="Canette Red Bull Winter Edition Sugarfree Pomme d'amour entre une pomme d'amour et une pomme au caramel, dans un décor de Noël" width="1800" height="777"></div>
 </div>
 
 <section id="fiche" class="acc">
   <div class="wrap">
-    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="fiche-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M7 7h10M7 17h10"/></svg></span><span class="acc-text"><span class="section-title">Fiche produit</span><span class="acc-lead">L'essentiel à savoir avant de la glisser dans son sac.</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
+    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="fiche-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M7 7h10M7 17h10"/></svg></span><span class="acc-text"><span class="section-title">Fiche produit</span><span class="acc-lead">L'essentiel à savoir avant de la glisser dans son sac.</span></span><img class="acc-deco" src="deco-canette-bonnet.png" alt="" aria-hidden="true" width="300" height="300" loading="lazy"><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
     <div class="acc-panel" id="fiche-panel" hidden>
     <div>
       <dl class="sheet">
@@ -323,7 +389,7 @@
 
 <section id="entreprise" class="acc">
   <div class="wrap">
-    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="entreprise-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6l8-3v18M12 9h8v12M3 21h18M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/></svg></span><span class="acc-text"><span class="section-title">L'entreprise : Red Bull <svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Drapeau de l'Autriche"><rect width="30" height="20" fill="#ed2939"/><rect y="6.67" width="30" height="6.67" fill="#fff"/></svg></span><span class="acc-lead">Ce que disent les comptes de l'entreprise qui lancerait notre canette.</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
+    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="entreprise-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6l8-3v18M12 9h8v12M3 21h18M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2"/></svg></span><span class="acc-text"><span class="section-title">L'entreprise : Red Bull <svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Drapeau de l'Autriche"><rect width="30" height="20" fill="#ed2939"/><rect y="6.67" width="30" height="6.67" fill="#fff"/></svg></span><span class="acc-lead">Ce que disent les comptes de l'entreprise qui lancerait notre canette.</span></span><img class="acc-deco" src="deco-pere-noel-vol.png" alt="" aria-hidden="true" width="300" height="300" loading="lazy"><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
     <div class="acc-panel" id="entreprise-panel" hidden>
 
     <p class="ent-intro">Red Bull GmbH est une entreprise autrichienne fondée par Dietrich Mateschitz. Sa boisson est vendue pour la première fois en Autriche le 1er avril 1987 (<a href="https://www.redbull.com/fr-fr/energydrink/red-bull-histoire" target="_blank" rel="noopener">redbull.com</a>). Elle est aujourd'hui vendue dans 178 pays et emploie 21 924 personnes (fin 2025, <a href="https://www.redbull.com/fr-fr/energydrink/red-bull-entreprise" target="_blank" rel="noopener">redbull.com</a>).</p>
@@ -357,7 +423,7 @@
 
 <section id="marche" class="acc">
   <div class="wrap">
-    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="marche-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7.5 16v2M12 11v7M16.5 7v11"/></svg></span><span class="acc-text"><span class="section-title">Le marché</span><span class="acc-lead">Avant de fixer un prix, il faut savoir à quel besoin la boisson répond, pour qui, et face à qui.</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
+    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="marche-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7.5 16v2M12 11v7M16.5 7v11"/></svg></span><span class="acc-text"><span class="section-title">Le marché</span><span class="acc-lead">Avant de fixer un prix, il faut savoir à quel besoin la boisson répond, pour qui, et face à qui.</span></span><img class="acc-deco" src="deco-renne.png" alt="" aria-hidden="true" width="300" height="300" loading="lazy"><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
     <div class="acc-panel" id="marche-panel" hidden>
 
     <div class="grid3">
@@ -691,7 +757,7 @@
 
 <section id="proposition" class="acc">
   <div class="wrap">
-    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="proposition-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.6 1 2.5h6c0-.9.2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg></span><span class="acc-text"><span class="section-title">La proposition : afficher « Édition limitée »</span><span class="acc-lead">La variation du mix que nous proposons, pourquoi celle-là, et combien elle coûte.</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
+    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="proposition-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.6 1 2.5h6c0-.9.2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg></span><span class="acc-text"><span class="section-title">La proposition : afficher « Édition limitée »</span><span class="acc-lead">La variation du mix que nous proposons, pourquoi celle-là, et combien elle coûte.</span></span><img class="acc-deco" src="deco-canette-panneau.png" alt="" aria-hidden="true" width="300" height="300" loading="lazy"><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
     <div class="acc-panel" id="proposition-panel" hidden>
 
     <div class="prop-ab">
@@ -722,7 +788,7 @@
 
 <section id="prix-accepte" class="acc">
   <div class="wrap">
-    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="prix-accepte-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="acc-text"><span class="section-title">Le prix accepté</span><span class="acc-lead">Combien les 18-35 ans sont prêts à payer notre canette, et ce que change la mention « édition limitée ».</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
+    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="prix-accepte-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="acc-text"><span class="section-title">Le prix accepté</span><span class="acc-lead">Combien les 18-35 ans sont prêts à payer notre canette, et ce que change la mention « édition limitée ».</span></span><img class="acc-deco" src="deco-pere-noel-luge.png" alt="" aria-hidden="true" width="300" height="300" loading="lazy"><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
     <div class="acc-panel" id="prix-accepte-panel" hidden>
     <div class="calc etude">
       <h3>L'étude</h3>
@@ -917,7 +983,7 @@
 
 <section id="decision" class="acc">
   <div class="wrap">
-    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="decision-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 21h8M4 7h16M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 0 6 0z"/></svg></span><span class="acc-text"><span class="section-title">La décision : 1,45 €, sans la mention</span><span class="acc-lead">Quel prix, la mention se paie-t-elle, et quand notre scénario lâche.</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
+    <h2 class="acc-h"><button type="button" class="acc-head" aria-expanded="false" aria-controls="decision-panel"><span class="acc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 21h8M4 7h16M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 0 6 0z"/></svg></span><span class="acc-text"><span class="section-title">La décision : 1,45 €, sans la mention</span><span class="acc-lead">Quel prix, la mention se paie-t-elle, et quand notre scénario lâche.</span></span><img class="acc-deco" src="deco-pere-noel-cheminee.png" alt="" aria-hidden="true" width="300" height="300" loading="lazy"><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></button></h2>
     <div class="acc-panel" id="decision-panel" hidden>
     <div class="calc">
       <h3>1. Notre prix : 1,45 €</h3>
